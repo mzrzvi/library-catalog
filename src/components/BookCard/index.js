@@ -3,8 +3,8 @@ import React from 'react';
 import { Card } from 'antd';
 
 const BookCard = ({ book }) => (
-  <Card style={{ margin: 5 }}>
-    {book.Title}
+  <Card style={{ margin: 5, textAlign: 'center' }}>
+    <b>{book.Title}</b>
     <br/>
     {book.Author}
   </Card>
