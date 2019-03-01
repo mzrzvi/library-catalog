@@ -1,26 +1,28 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+
+import { Layout } from 'antd';
+
+import CatalogScreen from './screens/CatalogScreen';
+
+const { Content, Header } = Layout;
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <BrowserRouter>
+        <Layout style={{ minHeight: '100vh' }}>
+          <Header></Header>
+          <Content>
+            <Switch>
+              <Route exact path='/catalog' component={CatalogScreen}/>
+              <Route exact path='/' component={() => (<Redirect to='/catalog'/>)}/>
+            </Switch>
+          </Content>
+        </Layout>
+      </BrowserRouter>
     );
   }
 }
